@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:portfolio_tracker_flutter/items/stock_card.dart';
+import 'package:portfolio_tracker_flutter/models/company.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -10,10 +12,10 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       body: Column(
         children: [
-          Text("Home Screen")
+          StockCard(company: testCompany,)
         ],
       ),
     );
