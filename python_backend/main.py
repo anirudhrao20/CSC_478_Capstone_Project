@@ -78,6 +78,17 @@ async def company_profile(
     return client.company_profile2(symbol=ticker)
 
 
+@app.get("/quote/{ticker}")
+async def quote(
+        ticker: str,
+        request: Request,
+        api_key: str = Depends(verify_api_key)
+):
+    rate_limit()
+    client = get_finnhub_client()
+    return client.quote(symbol=ticker)
+
+
 if __name__ == "__main__":
     client = get_finnhub_client()
     print(client.market_status(exchange='US'))
