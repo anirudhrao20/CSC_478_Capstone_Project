@@ -1,19 +1,63 @@
 class Company {
-  String country;
-  String currency;
-  String exchange;
-  String ipo;
-  int marketCapitalization;
-  String name;
-  String phone;
-  double shareOutstanding;
-  String ticker;
-  String weburl;
-  String logo;
-  String finnhubIndustry;
+  final String country;
+  final String currency;
+  final String exchange;
+  final String ipo;
+  final double marketCapitalization;
+  final String name;
+  final String phone;
+  final double shareOutstanding;
+  final String ticker;
+  final String weburl;
+  final String logo;
+  final String finnhubIndustry;
 
-  Company(this.country, this.currency, this.exchange, this.ipo, this.marketCapitalization, this.name, this.phone, this.shareOutstanding, this.ticker, this.weburl, this.logo, this.finnhubIndustry);
+  Company({
+    required this.country,
+    required this.currency,
+    required this.exchange,
+    required this.ipo,
+    required this.marketCapitalization,
+    required this.name,
+    required this.phone,
+    required this.shareOutstanding,
+    required this.ticker,
+    required this.weburl,
+    required this.logo,
+    required this.finnhubIndustry,
+  });
+
+  factory Company.fromJson(Map<String, dynamic> json) {
+    return Company(
+      country: json['country'],
+      currency: json['currency'],
+      exchange: json['exchange'],
+      ipo: json['ipo'],
+      marketCapitalization: json['marketCapitalization'],
+      name: json['name'],
+      phone: json['phone'],
+      shareOutstanding: json['shareOutstanding'].toDouble(),
+      ticker: json['ticker'],
+      weburl: json['weburl'],
+      logo: json['logo'],
+      finnhubIndustry: json['finnhubIndustry'],
+    );
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'country': country,
+      'currency': currency,
+      'exchange': exchange,
+      'ipo': ipo,
+      'marketCapitalization': marketCapitalization,
+      'name': name,
+      'phone': phone,
+      'shareOutstanding': shareOutstanding,
+      'ticker': ticker,
+      'weburl': weburl,
+      'logo': logo,
+      'finnhubIndustry': finnhubIndustry,
+    };
+  }
 }
-
-
-Company testCompany = Company("US", "USD", "NASDAQ/NMS (GLOBAL MARKET)", "1980-12-12", 1415993, "Apple Inc", "14089961010", 4375.47998046875, "AAPL", "https://www.apple.com/", "https://static2.finnhub.io/file/publicdatany/finnhubimage/stock_logo/AAPL.png", "Technology");
