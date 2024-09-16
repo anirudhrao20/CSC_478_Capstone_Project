@@ -4,6 +4,7 @@ from fastapi import FastAPI, Header, HTTPException, Depends, Request
 import finnhub
 import time
 from collections import deque
+from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
 
@@ -39,6 +40,16 @@ def rate_limit():
         raise HTTPException(status_code=429, detail="Rate limit exceeded")
 
     rate_limit_queue.append(current_time)
+
+
+# Enable CORS to allow all origins (for development purposes)
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # Allow all origins
+    allow_credentials=True,
+    allow_methods=["*"],  # Allow all HTTP methods
+    allow_headers=["*"],  # Allow all HTTP headers
+)
 
 
 @app.get("/")
