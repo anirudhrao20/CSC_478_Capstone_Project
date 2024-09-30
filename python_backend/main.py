@@ -87,8 +87,3 @@ async def quote(
     rate_limit()
     client = get_finnhub_client()
     return client.quote(symbol=ticker)
-
-
-if __name__ == "__main__":
-    client = get_finnhub_client()
-    print(client.market_status(exchange='US'))
