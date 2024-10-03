@@ -19,9 +19,9 @@ RATE_LIMIT = 30
 rate_limit_queue = deque()
 
 
-def verify_api_key(x_api_key: str = Header(None)):
-    if x_api_key != API_KEY:
-        raise HTTPException(status_code=401, detail="Invalid or missing API key")
+# def verify_api_key(x_api_key: str = Header(None)):
+#     if x_api_key != API_KEY:
+#         raise HTTPException(status_code=401, detail="Invalid or missing API key")
 
 
 @lru_cache()
@@ -58,32 +58,21 @@ async def read_root():
 
 
 @app.get("/market_status")
-async def market_status(
-        request: Request,
-        api_key: str = Depends(verify_api_key)
-):
+async def market_status(request: Request):
     rate_limit()
     client = get_finnhub_client()
     return client.market_status(exchange='US')
 
 
 @app.get("/company_profile/{ticker}")
-async def company_profile(
-        ticker: str,
-        request: Request,
-        api_key: str = Depends(verify_api_key)
-):
+async def company_profile(ticker: str, request: Request):
     rate_limit()
     client = get_finnhub_client()
     return client.company_profile2(symbol=ticker)
 
 
 @app.get("/quote/{ticker}")
-async def quote(
-        ticker: str,
-        request: Request,
-        api_key: str = Depends(verify_api_key)
-):
+async def quote(ticker: str, request: Request):
     rate_limit()
     client = get_finnhub_client()
     return client.quote(symbol=ticker)
