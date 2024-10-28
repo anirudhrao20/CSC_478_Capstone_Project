@@ -3,7 +3,6 @@ import { useAuth } from './contexts/AuthContext';
 import { Layout } from './components/Layout';
 import { Auth } from './components/Auth';
 import { PortfolioPage } from './pages/Portfolio';
-import { MarketPage } from './pages/Market';
 import './App.css';
 
 function PrivateRoute({ children }: { children: React.ReactNode }) {

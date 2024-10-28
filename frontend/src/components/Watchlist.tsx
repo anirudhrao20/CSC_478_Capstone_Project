@@ -1,16 +1,19 @@
 import { useEffect, useState } from 'react';
-import { Card, CardBody, Button, Skeleton } from '@nextui-org/react';
+import { Button, Skeleton } from '@nextui-org/react';
 import { portfolioApi } from '../services/api';
-import { StockQuote } from './StockQuote';
 import { useNavigate } from 'react-router-dom';
-import { PlusIcon } from '@heroicons/react/24/outline';
 import { TrashIcon } from '@heroicons/react/24/outline';
 import { Table, TableHeader, TableColumn, TableBody, TableRow, TableCell, Chip } from '@nextui-org/react';
-import { emitWatchlistUpdate, onWatchlistUpdate } from '../utils/events';
+import { onWatchlistUpdate } from '../utils/events';
 
 interface WatchlistItem {
   id: number;
   symbol: string;
+  quote?: {
+    c?: number;
+    d?: number;
+    dp?: number;
+  };
 }
 
 export function Watchlist() {

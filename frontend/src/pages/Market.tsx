@@ -1,10 +1,9 @@
 import { Card, CardBody, CardHeader, Input } from "@nextui-org/react";
-import { MagnifyingGlassIcon } from '@heroicons/react/24/outline';
 import { StockSearch } from '../components/StockSearch';
 import { StockQuote } from '../components/StockQuote';
 import { Watchlist } from '../components/Watchlist';
 import { useState } from 'react';
-import { portfolioApi } from '../lib/portfolioApi';
+import { portfolioApi } from '../services/api';
 
 export function MarketPage() {
   const [selectedSymbol, setSelectedSymbol] = useState<string | null>(null);

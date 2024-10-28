@@ -28,3 +28,11 @@ export interface Portfolio {
   transactions?: Transaction[];
 }
 
+export interface Transaction {
+  id: number;
+  symbol: string;
+  quantity: number;
+  type: 'BUY' | 'SELL';
+  price: number;
+  timestamp: string;
+}
