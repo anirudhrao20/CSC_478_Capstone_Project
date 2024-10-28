@@ -1,4 +1,4 @@
-import { Link, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { 
   Navbar as NextUINavbar, 
   NavbarBrand, 
@@ -19,7 +19,6 @@ import { NavbarSearch } from './NavbarSearch';
 export function Navbar() {
   const { logout, user } = useAuth();
   const { theme, toggleTheme } = useTheme();
-  const location = useLocation();
 
   return (
     <NextUINavbar maxWidth="xl" position="sticky">

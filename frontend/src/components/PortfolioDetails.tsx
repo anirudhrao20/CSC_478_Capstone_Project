@@ -10,18 +10,18 @@ import {
   ModalBody,
   ModalFooter,
   Input,
-  Spinner,
   Select,
   SelectItem
 } from "@nextui-org/react";
-import { PlusIcon, TrashIcon } from '@heroicons/react/24/outline';
+import { PlusIcon } from '@heroicons/react/24/outline';
 import { portfolioApi } from '../services/api';
 import { MetricCard } from './MetricCard';
 import { PortfolioChart } from './PortfolioChart';
 import { StockAllocation } from './StockAllocation';
 import { MarketNews } from './MarketNews';
 import { TransactionHistory } from './TransactionHistory';
-import { Stock, Portfolio } from '../types/portfolio';
+import { Portfolio } from '../types/portfolio';
+import { Stock } from '../types/portfolio';
 
 function PortfolioSkeleton() {
   return (
@@ -78,7 +78,7 @@ export function PortfolioDetails({ portfolioId, onUpdate }: { portfolioId: numbe
       const portfolioData = response.data;
       
       // Calculate values for each stock and fetch company info
-      const stocksWithValues = await Promise.all(portfolioData.stocks.map(async (stock) => {
+      const stocksWithValues = await Promise.all(portfolioData.stocks.map(async (stock: Stock) => {
         try {
           const quoteResponse = await portfolioApi.getStockQuote(stock.symbol);
           

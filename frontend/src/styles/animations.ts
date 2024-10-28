@@ -11,8 +11,4 @@ export const fadeIn = keyframes`
   }
 `;
 
-// Apply to components using styled-components
-const AnimatedComponent = styled('div')({
-  animation: `${fadeIn} 0.3s ease-out`,
-});
 

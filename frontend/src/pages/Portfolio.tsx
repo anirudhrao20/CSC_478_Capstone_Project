@@ -49,22 +49,3 @@ export function PortfolioPage() {
     </div>
   );
 }
-
-interface MarketCardProps {
-  title: string;
-  value: string;
-  change: string;
-  isPositive: boolean;
-}
-
-function MarketCard({ title, value, change, isPositive }: MarketCardProps) {
-  return (
-    <div className="p-4 rounded-lg bg-default-100">
-      <p className="text-sm text-default-500">{title}</p>
-      <p className="text-xl font-bold">${value}</p>
-      <p className={`text-sm ${isPositive ? 'text-success' : 'text-danger'}`}>
-        {change}
-      </p>
-    </div>
-  );
-}
