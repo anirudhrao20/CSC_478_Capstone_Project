@@ -1,5 +1,4 @@
-import { Input, Button, Modal, ModalContent, ModalBody, useDisclosure } from "@nextui-org/react";
-import { MagnifyingGlassIcon } from '@heroicons/react/24/outline';
+import { Button, Modal, ModalContent, ModalBody, useDisclosure } from "@nextui-org/react";
 import { StockSearch } from './StockSearch';
 import { StockQuote } from './StockQuote';
 import { useState } from 'react';

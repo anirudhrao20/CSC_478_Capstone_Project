@@ -1,4 +1,4 @@
-import { Input, Spinner, Card, CardBody } from "@nextui-org/react";
+import { Input, Spinner } from "@nextui-org/react";
 import { MagnifyingGlassIcon } from '@heroicons/react/24/outline';
 import { useState, useEffect, useRef } from 'react';
 import { stockApi } from '../services/api';

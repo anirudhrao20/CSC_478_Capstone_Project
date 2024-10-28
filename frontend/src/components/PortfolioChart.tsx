@@ -1,12 +1,6 @@
 import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip, Legend } from 'recharts';
 import { Stock } from '../types/portfolio';
 
-interface ChartData {
-  symbol: string;
-  value: number;
-  percentage?: number;
-}
-
 const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', '#8884d8'];
 
 export function PortfolioChart({ data }: { data: Stock[] }) {

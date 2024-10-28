@@ -1,4 +1,4 @@
-import { Card, CardBody, Link, Divider } from "@nextui-org/react";
+import { Link, Divider } from "@nextui-org/react";
 import { useState, useEffect } from 'react';
 import { portfolioApi } from '../services/api';
 

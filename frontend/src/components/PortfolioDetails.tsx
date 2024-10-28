@@ -10,18 +10,17 @@ import {
   ModalBody,
   ModalFooter,
   Input,
-  Spinner,
   Select,
   SelectItem
 } from "@nextui-org/react";
-import { PlusIcon, TrashIcon } from '@heroicons/react/24/outline';
+import { PlusIcon } from '@heroicons/react/24/outline';
 import { portfolioApi } from '../services/api';
 import { MetricCard } from './MetricCard';
 import { PortfolioChart } from './PortfolioChart';
 import { StockAllocation } from './StockAllocation';
 import { MarketNews } from './MarketNews';
 import { TransactionHistory } from './TransactionHistory';
-import { Stock, Portfolio } from '../types/portfolio';
+import { Portfolio } from '../types/portfolio';
 
 function PortfolioSkeleton() {
   return (
