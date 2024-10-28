@@ -37,7 +37,9 @@ export function StockQuote({ symbol, showAddButton, onAddToWatchlist, onClose }:
   const handleAddToWatchlist = async () => {
     try {
       setIsAdding(true);
-      await onAddToWatchlist();
+      if (onAddToWatchlist) {
+        await onAddToWatchlist();
+      }
     } finally {
       setIsAdding(false);
     }

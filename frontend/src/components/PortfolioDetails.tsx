@@ -21,6 +21,7 @@ import { StockAllocation } from './StockAllocation';
 import { MarketNews } from './MarketNews';
 import { TransactionHistory } from './TransactionHistory';
 import { Portfolio } from '../types/portfolio';
+import { Stock } from '../types/portfolio';
 
 function PortfolioSkeleton() {
   return (
@@ -77,7 +78,7 @@ export function PortfolioDetails({ portfolioId, onUpdate }: { portfolioId: numbe
       const portfolioData = response.data;
       
       // Calculate values for each stock and fetch company info
-      const stocksWithValues = await Promise.all(portfolioData.stocks.map(async (stock) => {
+      const stocksWithValues = await Promise.all(portfolioData.stocks.map(async (stock: Stock) => {
         try {
           const quoteResponse = await portfolioApi.getStockQuote(stock.symbol);
           

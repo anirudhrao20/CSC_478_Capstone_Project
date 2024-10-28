@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Button, Skeleton } from '@nextui-org/react';
 import { portfolioApi } from '../services/api';
-import { useNavigate } from 'react-router-dom';
 import { TrashIcon } from '@heroicons/react/24/outline';
 import { Table, TableHeader, TableColumn, TableBody, TableRow, TableCell, Chip } from '@nextui-org/react';
 import { onWatchlistUpdate } from '../utils/events';
@@ -37,7 +36,7 @@ export function Watchlist() {
       const response = await portfolioApi.getWatchlist();
       // Load quotes for each stock
       const itemsWithQuotes = await Promise.all(
-        response.data.map(async (item) => {
+        response.data.map(async (item: { symbol: string; id: number }) => {
           const quoteResponse = await portfolioApi.getStockQuote(item.symbol);
           return {
             ...item,

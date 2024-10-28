@@ -1,9 +1,13 @@
 import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip, Legend } from 'recharts';
-import { Stock } from '../types/portfolio';
 
 const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', '#8884d8'];
 
-export function PortfolioChart({ data }: { data: Stock[] }) {
+interface ChartData {
+  symbol: string;
+  value: number;
+}
+
+export function PortfolioChart({ data }: { data: ChartData[] }) {
   // Filter out invalid entries and ensure we have values
   const validData = data.filter(item => item.value && item.value > 0);
   
