@@ -1,10 +1,13 @@
 from pydantic import BaseModel
 
+
 class WatchlistItemBase(BaseModel):
     symbol: str
 
+
 class WatchlistItemCreate(WatchlistItemBase):
     pass
+
 
 class WatchlistItem(WatchlistItemBase):
     id: int
@@ -12,4 +15,3 @@ class WatchlistItem(WatchlistItemBase):
 
     class Config:
         from_attributes = True
-

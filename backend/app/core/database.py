@@ -12,6 +12,7 @@ Base = declarative_base()
 # Async database setup
 database = Database(settings.DATABASE_URL)
 
+
 def get_db():
     db = SessionLocal()
     try:

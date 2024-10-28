@@ -2,6 +2,7 @@ from app.core.database import Base, engine, SessionLocal
 from app.models import User, Portfolio, Stock, Transaction
 from app.core.security import get_password_hash
 
+
 def init_db():
     # Drop all tables
     Base.metadata.drop_all(bind=engine)
@@ -46,15 +47,16 @@ def init_db():
                 type="BUY"
             )
             db.add(transaction)
-        
+
         db.commit()
         print("Test data created successfully!")
-    
+
     except Exception as e:
         print(f"Error creating test data: {e}")
         db.rollback()
     finally:
         db.close()
+
 
 if __name__ == "__main__":
     init_db()

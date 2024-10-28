@@ -2,12 +2,15 @@ from pydantic import BaseModel
 from typing import List
 from datetime import datetime
 
+
 class StockBase(BaseModel):
     symbol: str
     quantity: float
 
+
 class StockCreate(StockBase):
     pass
+
 
 class Stock(StockBase):
     id: int
@@ -16,13 +19,16 @@ class Stock(StockBase):
     class Config:
         from_attributes = True
 
+
 class TransactionBase(BaseModel):
     symbol: str
     quantity: float
     type: str  # "BUY" or "SELL"
 
+
 class TransactionCreate(TransactionBase):
     pass
+
 
 class Transaction(TransactionBase):
     id: int
@@ -33,11 +39,14 @@ class Transaction(TransactionBase):
     class Config:
         from_attributes = True
 
+
 class PortfolioBase(BaseModel):
     name: str
 
+
 class PortfolioCreate(PortfolioBase):
     stocks: List[StockCreate]
+
 
 class Portfolio(PortfolioBase):
     id: int
@@ -47,4 +56,3 @@ class Portfolio(PortfolioBase):
 
     class Config:
         from_attributes = True
-

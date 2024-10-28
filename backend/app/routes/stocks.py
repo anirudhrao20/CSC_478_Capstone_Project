@@ -6,7 +6,7 @@ from app.models.user import User
 from app.models.watchlist import Watchlist
 from app.schemas.watchlist import WatchlistItemCreate, WatchlistItem
 import httpx
-from app.core.settings import settings
+from app.core.config import settings
 
 router = APIRouter()
 

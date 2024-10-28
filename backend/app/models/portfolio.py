@@ -3,17 +3,18 @@ from sqlalchemy.orm import relationship
 from app.core.database import Base
 from sqlalchemy.sql import func
 
+
 class Portfolio(Base):
     __tablename__ = "portfolios"
 
     id = Column(Integer, primary_key=True, index=True)
     name = Column(String, index=True)
     user_id = Column(Integer, ForeignKey("users.id"))
-    
+
     user = relationship("User", back_populates="portfolios")
     stocks = relationship("Stock", back_populates="portfolio", cascade="all, delete-orphan")
     transactions = relationship("Transaction", back_populates="portfolio", cascade="all, delete-orphan")
-    
+
     @property
     def holdings(self):
         # Group transactions by symbol and calculate net position
@@ -22,9 +23,10 @@ class Portfolio(Base):
             if transaction.symbol not in holdings:
                 holdings[transaction.symbol] = 0
             holdings[transaction.symbol] += transaction.quantity
-        
+
         # Filter out positions with zero quantity
         return {k: v for k, v in holdings.items() if v > 0}
+
 
 class Stock(Base):
     __tablename__ = "stocks"
@@ -35,6 +37,7 @@ class Stock(Base):
     portfolio_id = Column(Integer, ForeignKey("portfolios.id"))
 
     portfolio = relationship("Portfolio", back_populates="stocks")
+
 
 class Transaction(Base):
     __tablename__ = "transactions"
