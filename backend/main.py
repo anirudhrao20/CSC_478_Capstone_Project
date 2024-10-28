@@ -1,9 +1,15 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
+from fastapi.responses import FileResponse
+import os
 from app.core.database import database
 from app.routes import auth, users, portfolio, stocks, analytics
 
-app = FastAPI(title="Stock Portfolio API")
+app = FastAPI(title="CSC 478 Capstone Group 6 API")
+
+# Mount static files
+app.mount("/static", StaticFiles(directory="app/static"), name="static")
 
 # CORS configuration - Allow all origins in development
 app.add_middleware(
@@ -36,3 +42,10 @@ app.include_router(analytics.router, prefix="/analytics", tags=["analytics"])
 @app.get("/")
 async def root():
     return {"message": "Welcome to Stock Portfolio API"}
+
+@app.get("/scalar-docs")
+async def get_scalar_docs():
+    static_file_path = "app/static/scalar-docs.html"
+    if not os.path.exists(static_file_path):
+        raise HTTPException(status_code=404, detail="Documentation not found")
+    return FileResponse(static_file_path)
